@@ -16,6 +16,6 @@ spec: #dictinary #in deployment what i want to create
    spec:
       containers:
         - name: myapp3-container
-          image: stacksimplify/kubenginx:3.0.0 #this is the image it is going to use to create a container
+          image: piuma/phpsysinfo #this is the image it is going to use to create a container
           ports:
             - containerPort: 80 #all this container are going to expose internally with port 80
