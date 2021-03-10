@@ -1,21 +1,21 @@
+#kubectl apply -f deployment.yaml this yaml file will execute from top to bootm and left to right
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment # we are telling k8s cluster to create a deployment
 metadata: #dictionary in python
-  name: myapp3-deployment
-
-spec: #dictinary
-  replicas: 3
+  name: myapp3-deployment #using metadata i am providing the name of the deployment
+spec: #dictinary #in deployment what i want to create
+  replicas: 3 #i want to create three pod inside the deployment
   selector:
     matchLabels:
-      app: myapp3 
-  template:
+      app: myapp3 #it will create three pod with this label
+  template: #inside the pod i want to run a container
    metadata:
-    name: myapp2-pod
+    name: myapp2-pod 
     labels:
-      app: myapp3
+      app: myapp3 
    spec:
       containers:
         - name: myapp3-container
-          image: stacksimplify/kubenginx:3.0.0
+          image: stacksimplify/kubenginx:3.0.0 #this is the image it is going to use to create a container
           ports:
-            - containerPort: 80
+            - containerPort: 80 #all this container are going to expose internally with port 80
