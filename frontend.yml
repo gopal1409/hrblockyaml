@@ -32,6 +32,6 @@ spec:
           - name: DB_NAME 
             value: "webappdb"
           - name: DB_USERNAME
-            value: "root"
+            value: "dbadmin@akswebappdbgopal"
           - name: DB_PASSWORD
-            value: "dbpassword1"
+            value: "Hetal@123456"
