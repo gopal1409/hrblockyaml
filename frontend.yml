@@ -34,4 +34,7 @@ spec:
           - name: DB_USERNAME
             value: "dbadmin@akswebappdbgopal"
           - name: DB_PASSWORD
-            value: "Hetal@123456"
+            valueFrom:
+              secretKeyRef:
+                name: mysql-db-password
+                key: db-password
