@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app2-nginx-clusterip-service
+  name: app3-nginx
   labels:
-    app: app2-nginx 
+    app: myapp3 #the label we have defined inside deployment defination need to be m
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
-    app: app2-nginx
+    app: app: myapp3 #the label we have defined inside deployment defination need to be m
   ports:
   - port: 80
     targetPort: 80

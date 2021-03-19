@@ -1,0 +1,46 @@
+#any yaml file in ansible start with three dash
+--- 
+- #distionary in python
+ hosts: web #this playbook will be applied to worker machine only
+ tasks: #below this all the task defination comes. 
+   - name: install httpd package #if you have multiple task it start with -
+     yum: 
+       name: httpd #the name of the package
+       state: latest #this will install latest version of the package
+   - name: start and enable http apiVersion: v1
+     service:
+       name: httpd
+       enabled: true
+       state: started
+   - name: install latest package of firewalld
+     yum:
+       name: firewalld
+       state: latest 
+   - name: start and enable firewalld
+     service:
+       name: firewalld
+       enabled: true
+       state: started
+   - name: Permit http apiVersion: v1
+     firewalld:
+       service: http
+       permanent: true 
+       state: enabled
+       immediate: yes
+   - name: create a simple html web page 
+     copy:
+       content: "Welcome to ansible learning course\n"
+       dest: /var/www/html/index.html
+   - name: Defining web server name
+     lineinfile:
+       path: /etc/httpd/conf/httpd.conf
+       line: ServerName www.client.example.com:80
+       insertafter: "#ServerName"
+   - name: update entry in /etc/hostfile
+     lineinfile:
+       path: /etc/hosts
+       line: 192.168.1.11 www.client1.example
+   - name: deploy an file
+       file:
+         src: /var/lib/testfile
+         dest: /etc/    

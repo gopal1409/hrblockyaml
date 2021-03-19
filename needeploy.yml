@@ -1,0 +1,21 @@
+# when we run the command kubectl apply -f deploy.yaml
+apiVersion: apps/v1 #it invoke the kubernetes api
+kind: Deployment #this is the name of the api
+metadata: #python dictionary
+  name: myapp3-deploy #it will create a deployment by this name
+spec: #we are providing specification about the deployment
+  replicas: 3 #we want to create three pod
+  selector:
+    matchLabels: #deployment is going to manage my pod
+      app: myaap3 # we chave create another metdata that is the labels
+  template: #how the containr is going to be launched
+    metadata:
+      name: myapp3-pod #template will also have some metadata
+      labels:
+        app: myapp3 #the label we have defined inside deployment defination need to be matched with labels in template
+    spec: 
+      containers:
+        - name: myapp3-container #this will be the name of the container
+          image: stacksimplify/kubenginx:3.0.0 #it will download a custom image from hub,docker.com
+          ports:
+            - containerPort: 80 #it will expose the application inside your k8s cluster in port 80
