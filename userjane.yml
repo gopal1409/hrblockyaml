@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding 
+metadata:
+  name: read-pods-jane
+  namespace: default
+subjects:
+# you can define n number of user
+- kind: User
+  name: jane
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-reader
